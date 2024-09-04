@@ -7,7 +7,7 @@ import { cars } from '../data/carsSample';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { PublicKey, Transaction, SystemProgram, LAMPORTS_PER_SOL } from '@solana/web3.js';
-
+import { PhantomWalletName } from "@solana/wallet-adapter-phantom";
 
 const subscribeToRoadTax = async (connection, wallet, amount) => {
     if (!wallet.publicKey) throw new Error('Wallet not connected');
@@ -40,7 +40,9 @@ export default function Home() {
 
   useEffect(() => {
     // Check if the user is registered
+    wallet.select(PhantomWalletName);
     wallet.connect();
+    // window.phantom.solana.connect();
     const storedCredentials = localStorage.getItem('webAuthnCredentials');
 
     setCarId(localStorage.getItem("car"));
