@@ -111,7 +111,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
         {/* Car Information */}
 
         <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
@@ -148,14 +148,88 @@ export default function Home() {
         <div className="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]">
           <div className="p-4 md:p-5">
             <h3 className="text-lg font-bold text-gray-800 dark:text-white">Recent Transactions</h3>
-            <ul className="mt-2 text-gray-800 dark:text-gray-400">
-              {car.transactions?.map((tx, index) => (
-                <li key={index} className="mb-2">
-                  <strong>{tx.date}:</strong> {tx.type} - USDC {tx.amount}<br />
-                  <span className="text-xs text-gray-500">Tx Hash: {tx.txHash}</span>
-                </li>
+  <div className="flex flex-col">
+    <div className="-m-1.5 overflow-x-auto">
+      <div className="p-1.5 min-w-full inline-block align-middle">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
+
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+            <thead className="bg-gray-50 dark:bg-neutral-800">
+
+              <tr>
+                <th scope="col" className="px-6 py-3 text-start">
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Date
+                    </span>
+                  </div>
+                </th>
+
+                <th scope="col" className="px-6 py-3 text-start">
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Type
+                    </span>
+                  </div>
+                </th>
+
+                <th scope="col" className="px-6 py-3 text-start">
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Amount
+                    </span>
+                  </div>
+                </th>
+
+                <th scope="col" className="px-6 py-3 text-start">
+                  <div className="flex items-center gap-x-2">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-neutral-200">
+                      Transaction Hash
+                    </span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody className="divide-y divide-gray-200 dark:divide-neutral-700">
+            {car.transactions?.map((tx, index) => (
+              <tr key={index}  className="bg-white hover:bg-gray-50 dark:bg-neutral-900 dark:hover:bg-neutral-800">
+                <td className="size-px whitespace-nowrap align-top">
+                  <a className="block p-6" >
+                    <div className="flex items-center gap-x-4">
+                     
+                        <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">{tx.date}</span>
+                      </div>
+                  </a>
+                </td>
+                <td className="size-px whitespace-nowrap align-top">
+                  <a className="block p-6" href="#">
+                    <div className="flex items-center gap-x-3">
+                      <div className="grow">
+                        <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">{tx.type}</span>
+                      </div>
+                    </div>
+                  </a>
+                </td>
+                <td className="h-px w-72 min-w-72 align-top">
+                  <a className="block p-6" >
+                    <span className="block text-sm font-semibold text-gray-800 dark:text-neutral-200">USDC {tx.amount}</span>
+                  </a>
+                </td>
+                <td className="size-px whitespace-nowrap align-top">
+                  <a className="block p-6" >
+                    <span className="text-sm text-gray-600 dark:text-neutral-400">{tx.txHash}</span>
+                  </a>
+                </td>
+              </tr>
               ))}
-            </ul>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+  </div>
+</div>
           </div>
         </div>
 

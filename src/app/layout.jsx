@@ -10,6 +10,7 @@ import { WalletProviders } from "./providers";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+  metadataBase: new URL('https://sol-car.vercel.app/'),
   title: "SolCar",
   description: "Revolutioning the way you PAY on road",
   openGraph: {
